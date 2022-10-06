@@ -3,5 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :movies
+
+  resources :bookmarks, only: [:destroy]
+  resources :lists, only: [:create, :destroy, :new, :show, :index] do
+    resources :bookmarks, only: [:create, :new ]
+  end
 end
